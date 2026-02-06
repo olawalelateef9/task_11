@@ -1,0 +1,11 @@
+---
+- name: Install Nginx
+  hosts: web
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: Install Nginx on Target Node
+      package:
+        name: nginx
+        state: present
