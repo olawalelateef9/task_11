@@ -5,13 +5,13 @@
   gather_facts: true
 
   tasks:
-    - name: Install Nginx on Target Node
-      package:
+    - name: Install Nginx on any OS
+      ansible.builtin.package:
         name: nginx
         state: present
 
-    - name: Start Nginx      
-      service:
+    - name: Start and Enable Nginx      
+      ansible.builtin.service:
         name: nginx
         state: started
         enabled: yes
@@ -20,6 +20,7 @@
       ansible.builtin.file:
         path: /usr/share/nginx/html/assets
         state: directory
+        mode: '0755'
         
 
     - name: Copy index file to Nginx default location      
