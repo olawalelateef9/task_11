@@ -23,8 +23,8 @@
         
 
     - name: Copy index file to Nginx default location      
-      ansible.builtin.copy:
-        src: ../nginx_artefacts/index.html
+      ansible.builtin.template:
+        src: index.html.j2
         dest: /usr/share/nginx/html/index.html
 
     - name: Copy js file     
