@@ -17,7 +17,7 @@
         enabled: yes
 
     - name: Copy index file to Nginx default location      
-      ansible.buitin.copy:
+      ansible.builtin.copy:
         src: ../nginx_artefacts/index.html
         dest: /usr/share/nginx/html/index.html
-        enabled: yes    
+           
