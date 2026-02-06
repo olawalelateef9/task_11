@@ -15,6 +15,12 @@
         name: nginx
         state: started
         enabled: yes
+    - name: Remove default Nginx site on Ubuntu
+      ansible.builtin.file:
+        path: /etc/nginx/sites-enabled/default
+        state: absent
+      when: ansible_os_family == "Debian"
+      notify: Restart Nginx    
 
     - name: Create assets directory for nginx      
       ansible.builtin.file:
@@ -39,5 +45,11 @@
     - name: Copy css file     
       ansible.builtin.copy:
         src: ../nginx_artefacts/assets/styles.css
-        dest: /usr/share/nginx/html/assets/styles.css       
-           
+        dest: /usr/share/nginx/html/assets/styles.css  
+
+
+  handlers:
+    - name: Restart Nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted           
