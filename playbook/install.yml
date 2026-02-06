@@ -18,7 +18,7 @@
 
     - name: Create assets directory for nginx      
       ansible.builtin.file:
-        path: /usr/share/nginx/html/index.assets
+        path: /usr/share/nginx/html/assets
         state: directory
         
 
